@@ -1,9 +1,36 @@
-module.exports = (req, res) => {
-    // if (req.method != 'POST') {
-    //     res.status(400).send("This endpoint only accepts POST requests")
-    // }
-    // const {message, interview} = req.body
+const { sendMessage } = require("../telegram")
 
-    // res.status(200).send(interview ? "I'm excited to meet the team! Thanks for taking the time to look at my application." : "Thanks for taking the time to look at my application!")
-    res.status(200).send()
+module.exports = async (req, res) => {
+    try {
+        if (req.method != 'POST') {
+            res.send("This endpoint only accepts POST requests")
+        }
+        else if (!req.body) {
+            res.status(400).send("POST requests to this endpoint must have a body")
+        }
+        else if (req.headers['content-type'] != "application/json") {
+            res.status(400).send("POST body must have content-type of application/json!")
+        }
+        else {
+            const {message, interview} = req.body
+            if (!message && !interview) {
+                res.status(400).send("At least one of message and interview must be provided in a JSON body!")
+            }   
+            else {
+                let msg = "Thanks for taking the time to look at my application."
+                if (interview) {
+                    msg = "I'm excited to meet the team! " + msg
+                    const a = await sendMessage(message + "--- Wants interview")
+                }
+                else {
+                    const a = await sendMessage(message + "\n --- No interview")
+                }
+
+                res.send(msg)
+            }
+        }
+    }
+    catch (err) {
+        res.status(500).send("Unable to handle your request. This endpoint only accepts POST requests with application/json content type.")
+    }
 }
