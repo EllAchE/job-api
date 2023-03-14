@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/api/accept.js"
+    },
+    {
+      "src": "/api/accept.js",
+      "methods": ["POST"],
+      "dest": "/api/accept.js"
+    }
+  ]
+}
