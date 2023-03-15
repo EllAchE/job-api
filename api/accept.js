@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
         else {
             const {message, interview} = req.body
             if (!message && !interview) {
-                res.status(400).send("At least one of message and interview must be provided in a JSON body!")
+                res.status(400).send("At least one of message and interview must be provided!")
             }   
             else {
                 let msg = "Thanks for taking the time to look at my application."
