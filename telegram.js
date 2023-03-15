@@ -1,4 +1,4 @@
-const axios = require("axios")
+import * as axios from axios
 const url = require("url")
 require("dotenv").config()
 
