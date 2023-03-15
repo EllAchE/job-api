@@ -20,10 +20,10 @@ module.exports = async (req, res) => {
                 let msg = "Thanks for taking the time to look at my application."
                 if (interview) {
                     msg = "I'm excited to meet the team! " + msg
-                    const a = await sendMessage(message + "--- Wants interview")
+                    await sendMessage(message + "\nWants interview")
                 }
                 else {
-                    const a = await sendMessage(message + "\n --- No interview")
+                    await sendMessage(message + "\nNo interview")
                 }
 
                 res.send(msg)
