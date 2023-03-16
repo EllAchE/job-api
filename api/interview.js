@@ -12,13 +12,13 @@ module.exports = async (req, res) => {
             res.status(400).send("POST body must have content-type of application/json!")
         }
         else {
-            const {message, interview} = req.body
-            if (!message && !interview) {
-                res.status(400).send("At least one of message and interview must be provided!")
+            const {message, offerInterview} = req.body
+            if (!message && !offerInterview) {
+                res.status(400).send("At least one of message and offerInterview must be provided!")
             }   
             else {
                 let msg = "Thanks for taking the time to look at my application."
-                if (interview) {
+                if (offerInterview) {
                     msg = "I'm excited to meet the team! " + msg
                     await sendMessage(message + "\nWants interview")
                 }

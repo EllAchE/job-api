@@ -2,12 +2,12 @@
   "routes": [
     {
       "src": "/",
-      "dest": "/api/accept.js"
+      "dest": "/api/interview.js"
     },
     {
-      "src": "/api/accept.js",
+      "src": "/api/interview.js",
       "methods": ["POST"],
-      "dest": "/api/accept.js"
+      "dest": "/api/interview.js"
     }
   ]
 }
