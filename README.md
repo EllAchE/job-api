@@ -1,10 +1,19 @@
-# Deploy your own API for accepting interviews!
+# Deploy your own API for accepting interview requests 🚀!
 
 Ask you prospective employers to send you POST requests instead of emails.
 
+## Prequisites
+
+- Requires a telegram account & bot
+- Requires a functions environment to deploy to (i.e. vercel)
+
 ## Usage
 
-`curl 
+```
+curl -X POST http://your-endpoint-url \
+     -H "Content-Type: application/json" \
+     -d '{"message":"<message_from_recruiter>","offerInterview":true}'
+```
 
 ## Deployment
 
